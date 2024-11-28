@@ -14,15 +14,14 @@ const App = () => {
     }, []);
 
     const fetchCandlestickData = async () => {
-        const response = await axios.get('https://cryptoanalyzer-rfr.onrender.com/api/bitcoin');
+        const response = await axios.get('http://localhost:5000/api/bitcoin');
         setCandlestickData(response.data);
     };
 
     const predictPrice = async () => {
-        const response = await axios.post('https://cryptoanalyzer-rfr.onrender.com/api/predict', candlestickData);
+        const response = await axios.post('http://localhost:5000/api/predict', candlestickData);
         setPrediction(response.data);
     };
-    
 
     const seriesData = candlestickData.map(data => ({
         x: new Date(data.time),  // Ensure the time is a valid JavaScript Date object
